@@ -34,6 +34,26 @@ The field definition affects how instances of this field type will display in th
 
 ----
 
+== Examples ==
+
+== Ex. 1: Generating a value on Create==
+
+Create `oncreate.php` inside your `wp-content/uploads/cctm/fields/{fieldname}/` directory.
+
+Add PHP code to the `oncreate.php` file, e.g.
+
+{{{
+<?php
+return date('Y-m-d H:i:s');
+?>
+}}}
+
+This code is only executed once per post: when the post is _first_ created -- the code executes as the form is _drawn_ (not as it is submitted).  After that, it will not execute again.
+
+The date field supports ONLY the `oncreate.php` code evaluation (unlike the hidden fields, which support modifiers on save and on edit).
+
+
+
 == Example of Use  in Template File ==
 
 Usually, you would use a color-selector field to print a value into some HTML element that would actually make use of the color information.
